@@ -8,10 +8,11 @@ const GET_ACTIVE_EXPENSES = gql`
     expenses(where: { category: { is_active: { _eq: true } } }) {
       id
       currency
+      amount
+      note
       category {
         name
       }
-      amount
     }
   }
 `;
@@ -32,7 +33,8 @@ function App() {
         <ul>
           {records.map((record) => (
             <li key={record.id}>
-              {record.category.name} - {record.amount} {record.currency}
+              {record.category.name} - {record.amount} {record.currency} (
+              {record.note})
             </li>
           ))}
         </ul>

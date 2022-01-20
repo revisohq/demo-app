@@ -6,6 +6,7 @@ import { gql, useQuery } from "@apollo/client";
 const GET_ACTIVE_EXPENSES = gql`
   query getActiveExpense {
     expenses(where: { category: { is_active: { _eq: true } } }) {
+      id
       currency
       category {
         name
@@ -18,8 +19,6 @@ const GET_ACTIVE_EXPENSES = gql`
 function App() {
   const auth = useAuth();
   const expenses = useQuery(GET_ACTIVE_EXPENSES);
-
-  console.log(expenses);
   const records = expenses.data ? expenses.data.expenses : [];
 
   return (

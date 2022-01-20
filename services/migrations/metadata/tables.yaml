@@ -104,6 +104,9 @@
           _eq: x-hasura-user-id
 - table:
     schema: public
+    name: trips
+- table:
+    schema: public
     name: users
   insert_permissions:
   - role: anonymous

@@ -27,7 +27,7 @@ make reset
 
 or click this button to enjoy a **remote development environment**:
 
-[![Open in GitPod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/marcopeg/test-react-external)
+[![Open in GitPod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/revisohq/demo-app)
 
 ### Host's Ports
 

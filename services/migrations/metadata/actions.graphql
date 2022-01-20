@@ -1,0 +1,12 @@
+type Mutation {
+  login(
+    name: String!
+  ): LoginOutput
+}
+
+type LoginOutput {
+  id: String!
+  name: String!
+  token: String!
+}
+

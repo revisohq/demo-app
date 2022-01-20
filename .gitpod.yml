@@ -1,0 +1,31 @@
+tasks:
+  - name: Docker
+    init: docker-compose build
+    command: docker-compose up migrations adminer
+  - name: App
+    before: cd app
+    init: npm install
+    command: REACT_APP_HASURA_URL=$(gp url 3000) npm run start:gitpod
+
+ports:
+  - port: 5432
+    onOpen: ignore
+  - port: 8080
+    onOpen: ignore
+  - port: 3000
+    onOpen: open-preview
+  - port: 6060
+    onOpen: ignore
+  - port: 4000
+    onOpen: ignore
+  - port: 8008
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint@2.1.1
+    - esbenp.prettier-vscode@3.20.0
+    - mikestead.dotenv@1.0.1
+    - wayou.vscode-todo-highlight@1.0.4
+    - EditorConfig.EditorConfig@0.14.4
+    - ms-azuretools.vscode-docker

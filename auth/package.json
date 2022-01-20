@@ -1,0 +1,28 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@forrestjs/hooks": "^4.0.0-alpha.18",
+    "@forrestjs/package-fastify": "^4.0.0-alpha.18",
+    "dotenv": "^14.2.0",
+    "envalid": "^7.2.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon -L ./src/index.js",
+    "___// Testing Utilities //___": "",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "./node_modules/.bin/jest --projects test/templates/e2e --runInBand --testTimeout=10000",
+    "test:unit": "./node_modules/.bin/jest --projects test/templates/unit",
+    "tdd:e2e": "./node_modules/.bin/jest --projects test/templates/e2e --runInBand --watchAll --testTimeout=10000",
+    "tdd:unit": "jest --projects test/templates/unit --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

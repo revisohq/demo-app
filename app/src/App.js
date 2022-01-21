@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { useAuth } from "./AuthProvider";
 import { gql, useQuery } from "@apollo/client";
+import AppUI from "./AppUI";
 
 const GET_ACTIVE_EXPENSES = gql`
   query getActiveExpense {
@@ -22,25 +21,7 @@ function App() {
   const expenses = useQuery(GET_ACTIVE_EXPENSES);
   const records = expenses.data ? expenses.data.expenses : [];
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        Logged in as: {auth.user.name}
-        <hr />
-        <button onClick={auth.logout}>logout</button>
-        <hr />
-        <ul>
-          {records.map((record) => (
-            <li key={record.id}>
-              {record.category.name} - {record.amount} {record.currency} (
-              {record.note})
-            </li>
-          ))}
-        </ul>
-      </header>
-    </div>
-  );
+  return <AppUI auth={auth} records={records} />;
 }
 
 export default App;

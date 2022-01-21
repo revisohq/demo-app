@@ -1,7 +1,7 @@
 const global = require("./jest.globals")();
 module.exports = async () => {
-  console.log("AWAIT...");
+  console.info("\nChecking for the target service to work...");
   await global.awaitTestReady();
-  console.log("OOOOOK....");
+  console.info("OK");
   await global.pause(250);
 };

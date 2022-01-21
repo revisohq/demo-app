@@ -10,7 +10,7 @@ const AppUI = ({ auth, records }) => (
       <button onClick={auth.logout}>logout</button>
       <hr />
       <ul>
-        {records.map(record => (
+        {records.map((record) => (
           <li key={record.id}>
             {record.category.name} - {record.amount} {record.currency} (
             {record.note})

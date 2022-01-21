@@ -1,4 +1,4 @@
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../OneFront";
 import { gql, useQuery } from "@apollo/client";
 import AppUI from "./AppUI";
 

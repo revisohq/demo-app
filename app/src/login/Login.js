@@ -1,5 +1,5 @@
 import { useQuery, useMutation, gql } from "@apollo/client";
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../OneFront";
 
 const LIST_USERS = gql`
   query listUsers {

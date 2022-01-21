@@ -10,11 +10,12 @@ import reactRouter from "@forrestjs/react-router";
 import { OneFront } from "./OneFront";
 import { login } from "./login";
 import { app } from "./app";
+import { addExpense } from "./add-expense";
 
 runHookApp({
   trace: "compact",
-  services: [reactRoot, reactRouter, reactMUI],
-  features: [OneFront, login, app]
+  services: [reactRoot, reactRouter, reactMUI, OneFront],
+  features: [login, app, addExpense]
 }).catch((err) => console.error(`Boot: ${err.message}`));
 
 // If you want to start measuring performance in your app, pass a function

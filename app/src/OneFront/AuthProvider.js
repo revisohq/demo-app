@@ -36,21 +36,34 @@ const AuthProvider = ({
 
   // Create the Apollo client
   const apollo = useMemo(() => {
+    const options = {
+      cache: new InMemoryCache(),
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: "no-cache",
+          errorPolicy: "ignore"
+        },
+        query: {
+          fetchPolicy: "no-cache",
+          errorPolicy: "all"
+        }
+      }
+    };
     return sessionToken
       ? new ApolloClient({
+          ...options,
           link: new HttpLink({
             uri: `${process.env.REACT_APP_HASURA_URL}/v1/graphql`,
             headers: {
               Authorization: `Bearer ${sessionToken}`
             }
-          }),
-          cache: new InMemoryCache()
+          })
         })
       : new ApolloClient({
+          ...options,
           link: new HttpLink({
             uri: `${process.env.REACT_APP_HASURA_URL}/v1/graphql`
-          }),
-          cache: new InMemoryCache()
+          })
         });
   }, [sessionToken]);
 

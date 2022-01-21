@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -17,6 +18,8 @@ const AppUI = ({ auth, records }) => (
           </li>
         ))}
       </ul>
+      <hr />
+      <Link to="/expense/add">Register new expense</Link>
     </header>
   </div>
 );

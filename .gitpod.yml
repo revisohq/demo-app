@@ -10,6 +10,8 @@ tasks:
     before: cd app
     init: npm install
     command: |
+      echo "Waiting for the backend to build and come online." &&
+      echo "(this may take a few minutes the first time)" &&
       bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/v1/version)" != "200" ]]; do sleep 5; done' &&
       REACT_APP_HASURA_URL=$(gp url 3000) npm run start:gitpod
 

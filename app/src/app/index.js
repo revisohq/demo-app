@@ -7,7 +7,7 @@ export const app = ({ registerAction }) => {
     handler: {
       path: "/",
       exact: true,
-      component: App
+      element: <App />
     }
   });
 
@@ -16,7 +16,7 @@ export const app = ({ registerAction }) => {
     handler: {
       path: "/foo",
       exact: true,
-      component: Dashboard
+      element: <Dashboard />
     }
   });
 };

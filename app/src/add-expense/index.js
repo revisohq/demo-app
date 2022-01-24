@@ -6,7 +6,7 @@ export const addExpense = ({ registerAction }) => {
     handler: {
       path: "/expense/add",
       exact: true,
-      component: ExpenseAdd
+      element: <ExpenseAdd />
     }
   });
 };

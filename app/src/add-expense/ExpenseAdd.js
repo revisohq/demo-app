@@ -1,5 +1,5 @@
 import { gql, useQuery, useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ExpenseAddUI from "./ExpenseAddUI";
 
 const LIST_CATEGORIES = gql`
@@ -35,7 +35,7 @@ const ADD_EXPENSE = gql`
 `;
 
 const ExpenseAdd = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const categoriesData = useQuery(LIST_CATEGORIES);
   const [addExpense] = useMutation(ADD_EXPENSE);
   const categories = categoriesData.data ? categoriesData.data.items : [];
@@ -52,12 +52,14 @@ const ExpenseAdd = () => {
       }
     })
       .then((res) => {
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => console.error(err));
   };
 
-  const abortForm = () => history.push("/");
+  const abortForm = () => {
+    navigate("/");
+  };
 
   return (
     <ExpenseAddUI

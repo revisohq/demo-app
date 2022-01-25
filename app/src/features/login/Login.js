@@ -1,5 +1,5 @@
 import { useQuery, useMutation, gql } from "@apollo/client";
-import { useAuth } from "../OneFront";
+import { useOneAuth } from "../../one-front";
 
 const LIST_USERS = gql`
   query listUsers {
@@ -20,7 +20,7 @@ const LOGIN_USER = gql`
 `;
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login } = useOneAuth();
   const { data } = useQuery(LIST_USERS);
   const users = data ? data.users.map(({ name }) => name) : [];
 

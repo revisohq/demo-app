@@ -15,6 +15,8 @@ import {
   gql
 } from "@apollo/client";
 
+import { useGetContext } from "@forrestjs/react-root";
+
 const INTROSPECT_USER = gql`
   query introspectUser {
     users {
@@ -24,13 +26,11 @@ const INTROSPECT_USER = gql`
   }
 `;
 
-const AuthContext = createContext();
+const OneAuthContext = createContext();
 
-const AuthProvider = ({
-  children,
-  loginComponent = () => "noAuth",
-  loadingComponent = () => "loading..."
-}) => {
+export const OneAuthProvider = ({ children }) => {
+  const loginComponent = useGetContext("one.login.component");
+  const loadingComponent = useGetContext("one.loading.component");
   const [sessionToken, setSessionToken] = useState(null);
   const [userData, setUserData] = useState(null);
 
@@ -100,7 +100,7 @@ const AuthProvider = ({
 
   return (
     <ApolloProvider client={apollo}>
-      <AuthContext.Provider
+      <OneAuthContext.Provider
         value={{
           user: userData,
           logout,
@@ -112,11 +112,9 @@ const AuthProvider = ({
             ? children
             : createElement(loadingComponent)
           : createElement(loginComponent)}
-      </AuthContext.Provider>
+      </OneAuthContext.Provider>
     </ApolloProvider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
-
-export default AuthProvider;
+export const useOneAuth = () => useContext(OneAuthContext);

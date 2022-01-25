@@ -2,7 +2,7 @@ import Login from "./Login";
 
 export const login = ({ registerAction }) => {
   registerAction({
-    hook: "$ONE_FRONT_LOGIN",
+    hook: "$ONE_LOGIN",
     handler: () => Login
   });
 };

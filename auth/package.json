@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@forrestjs/hooks": "^4.0.0-alpha.18",
-    "@forrestjs/package-fastify": "^4.0.0-alpha.18",
+    "@forrestjs/hooks": "^4.0.0",
+    "@forrestjs/package-fastify": "^4.0.0",
     "dotenv": "^14.2.0",
     "envalid": "^7.2.2"
   },

@@ -11,7 +11,7 @@ const AppUI = ({ auth, records }) => (
       <button onClick={auth.logout}>logout</button>
       <hr />
       <ul>
-        {records.map((record) => (
+        {records.map(record => (
           <li key={record.id}>
             {record.category.name} - {record.amount} {record.currency} (
             {record.note})
@@ -19,7 +19,9 @@ const AppUI = ({ auth, records }) => (
         ))}
       </ul>
       <hr />
-      <Link to="/expense/add">Register new expense</Link>
+      <Link to="/expense/add" style={{ color: "yellow" }}>
+        Register new expense
+      </Link>
     </header>
   </div>
 );

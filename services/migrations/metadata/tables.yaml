@@ -104,7 +104,20 @@
           _eq: x-hasura-user-id
 - table:
     schema: public
+    name: hardware
+- table:
+    schema: public
     name: trips
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      filter:
+        user_id:
+          _eq: x-hasura-user-id
+      limit: 50
 - table:
     schema: public
     name: users

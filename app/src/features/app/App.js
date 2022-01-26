@@ -20,7 +20,6 @@ function App() {
   const auth = useOneAuth();
   const expenses = useQuery(GET_ACTIVE_EXPENSES);
   const records = expenses.data ? expenses.data.expenses : [];
-
   return <AppUI auth={auth} records={records} />;
 }
 

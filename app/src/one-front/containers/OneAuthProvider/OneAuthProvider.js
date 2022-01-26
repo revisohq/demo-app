@@ -16,6 +16,7 @@ import {
 } from "@apollo/client";
 
 import { useGetContext } from "@forrestjs/react-root";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 const INTROSPECT_USER = gql`
   query introspectUser {
@@ -91,8 +92,9 @@ export const OneAuthProvider = ({ children }) => {
       .query({ query: INTROSPECT_USER })
       .then(({ data }) => setUserData(data.users[0]))
       .catch((err) => {
+        console.log("!!!!!");
         console.error(err);
-        logout();
+        // logout();
       });
   }, [sessionToken, apollo]);
 
@@ -107,11 +109,13 @@ export const OneAuthProvider = ({ children }) => {
           login
         }}
       >
-        {sessionToken
-          ? userData
-            ? children
-            : createElement(loadingComponent)
-          : createElement(loginComponent)}
+        <ErrorBoundary>
+          {sessionToken
+            ? userData
+              ? children
+              : createElement(loadingComponent)
+            : createElement(loginComponent)}
+        </ErrorBoundary>
       </OneAuthContext.Provider>
     </ApolloProvider>
   );

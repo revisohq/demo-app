@@ -8,3 +8,5 @@ RUN npm install
 
 # Add other files that changes very often
 ADD jest.config.js /usr/src/app
+
+ENTRYPOINT ["npm", "start"]

@@ -107,6 +107,30 @@
     name: hardware
 - table:
     schema: public
+    name: oranges
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        user_id: x-hasura-user-id
+      columns:
+      - brand
+      - qt
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - brand
+      - id
+      - qt
+      - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
     name: trips
   select_permissions:
   - role: user

@@ -1,0 +1,1 @@
+CREATE TABLE "public"."oranges" ("id" serial NOT NULL, "user_id" uuid NOT NULL, "brand" text NOT NULL, "qt" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON UPDATE cascade ON DELETE cascade);

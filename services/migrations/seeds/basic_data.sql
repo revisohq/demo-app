@@ -27,3 +27,6 @@ INSERT INTO "public"."expenses"("id", "created_at", "user_id", "category_id", "a
 , (E'0f9694c3-2ed7-4ee3-be2a-4d978ba95b95', E'2021-12-09T09:05:09.574663+00:00', E'a0d95e7e-2eaf-448b-b75f-79f6dbc99a50', E'2e25b603-0fe6-40ec-9612-6a9825591341', 80, E'sek', E'trip to Tatooine')
 ;
 
+INSERT INTO "oranges" ("id", "user_id", "brand", "qt") VALUES
+(1,	'a0d95e7e-2eaf-448b-b75f-79f6dbc99a50',	'tipo1',	3),
+(2,	'a0d95e7e-2eaf-448b-b75f-79f6dbc99a50',	'tipo2',	4);

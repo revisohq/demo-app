@@ -24,26 +24,26 @@ services:
     #   timeout: 5s
     #   retries: 20
 
-  # app:
-  #   build:
-  #     context: ./app
-  #     dockerfile: Dockerfile.dev
-  #   networks:
-  #     - hasuraproject
-  #   ports:
-  #     - "${APP_PORT:-3000}:3000"
-  #   volumes:
-  #     - ./app/public:/usr/src/app/public:delegated
-  #     - ./app/src:/usr/src/app/src:delegated
-  #   environment:
-  #     REACT_APP_HASURA_URL: http://localhost:8080
-  #     CHOKIDAR_USEPOLLING: "true"
-  #   working_dir: /usr/src/app
-  #   stdin_open: true
-  #   tty: true
-  #   depends_on:
-  #     hasura:
-  #       condition: service_healthy
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    # networks:
+    #   - hasuraproject
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - ./app/public:/usr/src/app/public:delegated
+      - ./app/src:/usr/src/app/src:delegated
+    environment:
+      REACT_APP_HASURA_URL: http://localhost:8080
+      CHOKIDAR_USEPOLLING: "true"
+    # working_dir: /usr/src/app
+    # stdin_open: true
+    # tty: true
+    # depends_on:
+    #   hasura:
+    #     condition: service_healthy
 
   ###
   ### INFRASTRUCTURE
@@ -59,6 +59,8 @@ services:
     #     condition: service_healthy
     #   auth:
     #     condition: service_healthy
+    depends_on:
+      - postgres
     ports:
       - "${HASURA_PORT:-8080}:8080"
     environment:
@@ -74,7 +76,7 @@ services:
     #   interval: 5s
     #   timeout: 5s
     #   retries: 20
-    # restart: always
+    restart: always
 
   postgres:
     build:
@@ -114,21 +116,21 @@ services:
       HASURA_ENDPOINT: http://hasura:8080
       HASURA_ADMIN_SECRET: ${HASURA_ADMIN_SECRET:-hasura}
       HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
-    stdin_open: true
-    tty: true
+    # stdin_open: true
+    # tty: true
 
-  # adminer:
-  #   image: adminer:4.7
-  #   networks:
-  #     - hasuraproject
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-  #   links:
-  #     - postgres:db
-  #   ports:
-  #     - "${ADMINER_PORT:-8008}:8080"
-  #   restart: always
+  adminer:
+    image: adminer:4.7
+    # networks:
+    #   - hasuraproject
+    # depends_on:
+    #   postgres:
+    #     condition: service_healthy
+    # links:
+    #   - postgres:db
+    ports:
+      - "${ADMINER_PORT:-8008}:8080"
+    # restart: always
 
   ###
   ### TESTS

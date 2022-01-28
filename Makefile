@@ -7,40 +7,43 @@
 # 
 
 build:
-	docker-compose build --no-cache
+	lima nerdctl compose build --no-cache
 
 start:
-	docker-compose up -d migrations adminer app
-	docker-compose logs -f auth app
+	lima nerdctl compose up postgres hasura
+# 	docker-compose logs -f auth app
 
 stop:
-	docker-compose down
+	lima nerdctl compose down
 
-reset: stop
-	rm -rf .docker-data
-	docker-compose build --no-cache
+ps:
+	lima nerdctl compose ps
 
-test:
-	docker-compose up auth-test
-	docker-compose up app-test
+# reset: stop
+# 	rm -rf .docker-data
+# 	docker-compose build --no-cache
 
-console:
-	(cd services/migrations && hasura console)
+# test:
+# 	docker-compose up auth-test
+# 	docker-compose up app-test
 
-migrate:
-	docker-compose up migrations
+# console:
+# 	(cd services/migrations && hasura console)
 
-logs:
-	docker-compose logs -f
+# migrate:
+# 	docker-compose up migrations
 
-logs-auth:
-	docker-compose logs -f auth
+# logs:
+# 	docker-compose logs -f
 
-logs-hasura:
-	docker-compose logs -f hasura
+# logs-auth:
+# 	docker-compose logs -f auth
 
-logs-app:
-	docker-compose logs -f hasura
+# logs-hasura:
+# 	docker-compose logs -f hasura
+
+# logs-app:
+# 	docker-compose logs -f hasura
 
 
 # =====================
@@ -57,11 +60,11 @@ logs-app:
 # - Latency
 #
 
-prod-build:
-	docker-compose -f docker-compose.prod.yml build --no-cache
+# prod-build:
+# 	docker-compose -f docker-compose.prod.yml build --no-cache
 
-prod-start:
-	docker-compose -f docker-compose.prod.yml up
+# prod-start:
+# 	docker-compose -f docker-compose.prod.yml up
 
-prod-stop:
-	docker-compose -f docker-compose.prod.yml down
+# prod-stop:
+# 	docker-compose -f docker-compose.prod.yml down

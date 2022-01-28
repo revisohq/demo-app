@@ -4,12 +4,13 @@ import { runHookApp } from "@forrestjs/hooks";
 import reactRoot from "@forrestjs/react-root";
 import reactMUI from "@forrestjs/react-mui";
 import reactRouter from "@forrestjs/react-router";
+import { OneFront } from "./one-front";
 
 // Features
-import { OneFront } from "./one-front";
 import { login } from "./features/login";
 import { app } from "./features/app";
 import { addExpense } from "./features/add-expense";
+import { trips } from "./features/trips";
 
 runHookApp({
   trace: "compact",
@@ -23,5 +24,5 @@ runHookApp({
     }
   },
   services: [reactRoot, reactRouter, reactMUI, OneFront],
-  features: [login, app, addExpense]
+  features: [login, app, addExpense, trips]
 }).catch((err) => console.error(`Boot: ${err.message}`));

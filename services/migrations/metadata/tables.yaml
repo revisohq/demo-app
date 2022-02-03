@@ -1,5 +1,8 @@
 - table:
     schema: public
+    name: bananas
+- table:
+    schema: public
     name: categories
   object_relationships:
   - name: user
@@ -119,6 +122,14 @@
       - qt
       backend_only: false
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - brand
+      - id
+      - qt
+      filter: {}
+      limit: 100
   - role: user
     permission:
       columns:

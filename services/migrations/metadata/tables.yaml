@@ -1,6 +1,13 @@
 - table:
     schema: public
     name: bananas
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - created_at
+      - id
+      filter: {}
 - table:
     schema: public
     name: categories

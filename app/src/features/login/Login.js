@@ -21,7 +21,7 @@ const LOGIN_USER = gql`
 
 const Login = () => {
   const { login } = useOneAuth();
-  const { data } = useQuery(LIST_USERS);
+  const { data, error } = useQuery(LIST_USERS);
   const users = data ? data.users.map(({ name }) => name) : [];
 
   const [verifyUser] = useMutation(LOGIN_USER);

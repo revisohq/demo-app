@@ -149,6 +149,16 @@
           _eq: X-Hasura-User-Id
 - table:
     schema: public
+    name: simone
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      filter: {}
+      limit: 50
+- table:
+    schema: public
     name: trips
   select_permissions:
   - role: user

@@ -32,15 +32,12 @@ const loginHandler = async (request, reply) => {
   });
 };
 
-const login = ({ registerAction }) => {
-  registerAction({
-    hook: "$FASTIFY_ROUTE",
-    handler: {
-      method: "POST",
-      url: "/login",
-      handler: loginHandler
-    }
-  });
+module.exports = {
+  name: "login",
+  hook: "$FASTIFY_ROUTE",
+  handler: {
+    method: "POST",
+    url: "/login",
+    handler: loginHandler
+  }
 };
-
-module.exports = login;

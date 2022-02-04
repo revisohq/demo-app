@@ -1,5 +1,5 @@
 // ForrestJS Shared Services
-const { runHookApp } = require("@forrestjs/hooks");
+const forrestjs = require("@forrestjs/hooks");
 const serviceFastify = require("@forrestjs/service-fastify");
 const serviceFastifyHealthz = require("@forrestjs/service-fastify-healthz");
 const serviceApollo = require("@forrestjs/service-apollo");
@@ -9,7 +9,7 @@ const serviceJwt = require("@forrestjs/service-jwt");
 const login = require("./login");
 const { buildApolloConfig } = require("./hasura");
 
-runHookApp({
+forrestjs.run({
   trace: "compact",
   settings: () => ({
     jwt: {

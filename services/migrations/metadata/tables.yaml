@@ -1,15 +1,5 @@
 - table:
     schema: public
-    name: bananas
-  select_permissions:
-  - role: anonymous
-    permission:
-      columns:
-      - created_at
-      - id
-      filter: {}
-- table:
-    schema: public
     name: categories
   object_relationships:
   - name: user
@@ -115,48 +105,6 @@
 - table:
     schema: public
     name: hardware
-- table:
-    schema: public
-    name: oranges
-  insert_permissions:
-  - role: user
-    permission:
-      check: {}
-      set:
-        user_id: x-hasura-user-id
-      columns:
-      - brand
-      - qt
-      backend_only: false
-  select_permissions:
-  - role: anonymous
-    permission:
-      columns:
-      - brand
-      - id
-      - qt
-      filter: {}
-      limit: 100
-  - role: user
-    permission:
-      columns:
-      - brand
-      - id
-      - qt
-      - user_id
-      filter:
-        user_id:
-          _eq: X-Hasura-User-Id
-- table:
-    schema: public
-    name: simone
-  select_permissions:
-  - role: anonymous
-    permission:
-      columns:
-      - id
-      filter: {}
-      limit: 50
 - table:
     schema: public
     name: trips

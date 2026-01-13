@@ -1,3 +1,5 @@
+⚠️ Archived and moved to [Gitlab](https://biosphere.teamsystem.com/reviso/playground/demo-app)
+
 # FullStack Javascript
 
 This project proposes a possible structure for a micro-service oriented architecture that is paranoid with the **Developer Experience**.
